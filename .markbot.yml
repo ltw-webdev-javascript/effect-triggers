@@ -1,0 +1,121 @@
+repo: "effect-triggers"
+canvasCourse: "467503"
+canvasAssignment: "4202588"
+
+naming: true
+commits: 2
+liveWebsite: true
+
+html:
+  - path: "index.html"
+    locked: true
+
+css:
+  - path: "css/main.css"
+    valid: true
+    bestPractices: true
+    search:
+      - "transition"
+      - "animation"
+      - "@keyframes"
+
+js:
+  - path: "js/main.js"
+    valid: true
+    bestPractices: true
+    search:
+      - '\.toggleClass\('
+      - '\.addClass\('
+      - '\.removeClass\('
+      - "\\.on\\('animationend'"
+      - "\\.on\\('click'"
+      - "\\$\\('\\.btn-show-hide'\\)"
+      - "\\$\\('\\.box'\\)"
+      - "\\$\\('\\.btn-move'\\)"
+      - "\\$\\('\\.diamond'\\)"
+      - "\\$\\('\\.btn-collapse-expand'\\)"
+      - "\\$\\('\\.panel'\\)"
+      - "\\$\\('\\.btn-bounce'\\)"
+      - "\\$\\('\\.circle'\\)"
+      - "\\$\\('\\.btn-append'\\)"
+      - "\\$\\('\\.list'\\)"
+
+functionality:
+  - path: "index.html"
+    tests:
+      - |
+        let btn = $('.btn-show-hide');
+        let box = $('.box');
+        let oldClass = box.className;
+        let oldOpacity = css(box).opacity;
+
+        btn.dispatchEvent(ev('click'));
+
+        if (oldClass == box.className) fail('A class doesn’t get added to the box');
+        if (!css(box).transition) fail('The box should have a transition');
+
+        box.addEventListener('transitionend', function () {
+          if (css(box).opacity == oldOpacity) fail('The box’s `opacity` doesn’t change when the button is clicked');
+          pass();
+        });
+      - |
+        let btn = $('.btn-move');
+        let diamond = $('.diamond');
+        let oldClass = diamond.className;
+        let oldRight = css(diamond).right;
+
+        btn.dispatchEvent(ev('click'));
+
+        if (oldClass == diamond.className) fail('A class doesn’t get added to the diamond');
+        if (!css(diamond).transition) fail('The diamond should have a transition');
+
+        diamond.addEventListener('transitionend', function () {
+          if (css(diamond).right == oldRight) fail('The diamond’s `right` doesn’t change when the button is clicked');
+          pass();
+        });
+      - |
+        let btn = $('.btn-collapse-expand');
+        let panel = $('.panel');
+        let oldClass = panel.className;
+        let oldMaxheight = css(panel).maxHeight;
+
+        btn.dispatchEvent(ev('click'));
+
+        if (oldClass == panel.className) fail('A class doesn’t get added to the panel');
+        if (!css(panel).transition) fail('The panel should have a transition');
+
+        panel.addEventListener('transitionend', function () {
+          if (css(panel).maxHeight == oldMaxheight) fail('The panel’s `max-height` doesn’t change when the button is clicked');
+          pass();
+        });
+      - |
+        let btn = $('.btn-bounce');
+        let circle = $('.circle');
+        let oldClass = circle.className;
+        let oldAnimation = css(circle).animation;
+
+        btn.dispatchEvent(ev('click'));
+
+        if (oldClass == circle.className) fail('A class doesn’t get added to the circle');
+        if (!css(circle).animation || !css(circle).animationName) fail('The circle should have an animation');
+
+        circle.addEventListener('animationend', function () {
+          if (css(circle).animation != oldAnimation) fail('The circle’s `animation` isn’t removed at the end');
+          pass();
+        });
+      - |
+        let btn = $('.btn-append');
+        let list = $('.list');
+
+        btn.dispatchEvent(ev('click'));
+
+        let li = $('li', list);
+
+        if (css(li).animation == '') fail('The `<li>` doesn’t have an `animation`');
+
+        btn.dispatchEvent(ev('click'));
+
+        let allLis = $('li', list);
+        if (allLis.length < 2) fail('New `<li>` tags aren’t added to the list each click');
+
+        pass();
