@@ -5,7 +5,7 @@
 
 ---
 
-**Quick project summary shown here.**
+**Make buttons trigger effects on HTML elements on the page.**
 
 - *Fork this repository.*
 - Write a combination of CSS & Javascript to make each button perform an effect on their associated element.
