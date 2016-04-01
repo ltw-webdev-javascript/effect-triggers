@@ -54,7 +54,8 @@ functionality:
         if (oldClass == box.className) fail('A class doesn’t get added to the box');
         if (!css(box).transition) fail('The box should have a transition');
 
-        box.addEventListener('transitionend', function () {
+        on('.box', 'transitionend', function (err, ev) {
+          if (err) fail('The box’s transition never ends—check that it has a transition');
           if (css(box).opacity == oldOpacity) fail('The box’s `opacity` doesn’t change when the button is clicked');
           pass();
         });
@@ -69,7 +70,8 @@ functionality:
         if (oldClass == diamond.className) fail('A class doesn’t get added to the diamond');
         if (!css(diamond).transition) fail('The diamond should have a transition');
 
-        diamond.addEventListener('transitionend', function () {
+        on('.diamond', 'transitionend', function (err, ev) {
+          if (err) fail('The diamond’s transition never ends—check that it has a transition');
           if (css(diamond).right == oldRight) fail('The diamond’s `right` doesn’t change when the button is clicked');
           pass();
         });
@@ -84,7 +86,8 @@ functionality:
         if (oldClass == panel.className) fail('A class doesn’t get added to the panel');
         if (!css(panel).transition) fail('The panel should have a transition');
 
-        panel.addEventListener('transitionend', function () {
+        on('.panel', 'transitionend', function (err, ev) {
+          if (err) fail('The panel’s transition never ends—check that it has a transition');
           if (css(panel).maxHeight == oldMaxheight) fail('The panel’s `max-height` doesn’t change when the button is clicked');
           pass();
         });
@@ -99,7 +102,8 @@ functionality:
         if (oldClass == circle.className) fail('A class doesn’t get added to the circle');
         if (!css(circle).animation || !css(circle).animationName) fail('The circle should have an animation');
 
-        circle.addEventListener('animationend', function () {
+        on('.circle', 'animationend', function (err, evt) {
+          if (err) fail('The circle’s animation never completes—check that it has an animation');
           if (css(circle).animation != oldAnimation) fail('The circle’s `animation` isn’t removed at the end');
           pass();
         });
