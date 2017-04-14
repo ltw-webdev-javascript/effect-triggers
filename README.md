@@ -1,11 +1,12 @@
-# Effect triggers
-
-- Approx. completion time: **1 hour**
-- Deliverables: **1 HTML file, 1 CSS file, 1 JS file**
-
+---
+summary: 'Make buttons trigger effects on HTML elements on the page.'
+time: '1 hour'
+deliverables: '1 HTML file, 1 CSS file, 1 JS file'
 ---
 
-**Make buttons trigger effects on HTML elements on the page.**
+# Effect triggers
+
+## Overview
 
 - *Fork this repository.*
 - Write a combination of CSS & Javascript to make each button perform an effect on their associated element.
@@ -25,4 +26,4 @@ Create the interaction shown in the linked video.
 
 ## Hand in
 
-Drop this folder into your Markbot application. Make sure to fix all the errors. And submit to Canvas using Markbot.
+Drop this folder into your Markbot application. Make sure to fix all the errors. And submit online.

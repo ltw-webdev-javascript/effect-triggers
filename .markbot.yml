@@ -1,10 +1,13 @@
 repo: "effect-triggers"
-canvasCourse: "467503"
-canvasAssignment: "4202588"
 
 naming: true
-commits: 2
+restrictFileTypes: true
 liveWebsite: true
+
+git:
+  numCommits: 2
+  allCommitted: true
+  allSynced: true
 
 html:
   - path: "index.html"
